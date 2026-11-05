@@ -1,0 +1,99 @@
+/* MODAL BOX STYLE SAMA PERSIS KAYA DI INDEX */
+.modal-box { 
+    background-color: var(--bg-card); 
+    padding: 40px; 
+    border-radius: 20px; 
+    width: 100%; 
+    max-width: 550px; 
+    border: 1px solid rgba(59, 130, 246, 0.2); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+    text-align: center; 
+    animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.modal-box i { font-size: 36px; color: var(--accent-glow); margin-bottom: 15px; }
+.modal-box h3 { color: white; margin-bottom: 10px; font-size: 22px; font-weight: 600; letter-spacing: 1px; }
+.modal-box p { color: var(--text-dim); font-size: 13px; margin-bottom: 30px; }
+
+/* FORM INPUTS */
+.form-group { margin-bottom: 22px; text-align: left; }
+input[type="text"], input[type="password"] { 
+    width: 100%; 
+    padding: 14px 16px; 
+    background-color: var(--bg-input); 
+    border: 1px solid rgba(255,255,255,0.05); 
+    border-radius: 8px; 
+    font-size: 14px; 
+    color: white; 
+    transition: 0.3s; 
+    font-family: 'Poppins'; 
+}
+input:focus { outline: none; border-color: var(--accent-glow); box-shadow: 0 0 10px rgba(59,130,246,0.2); }
+
+/* GLOW BUTTON */
+.btn-glow {
+    display: inline-block; width: 100%; background-color: var(--accent-glow); color: white;
+    font-weight: 600; padding: 14px; border-radius: 30px; cursor: pointer;
+    text-transform: uppercase; font-size: 14px; letter-spacing: 1px;
+    box-shadow: var(--neon-glow); transition: all 0.3s ease; border: none; text-align: center;
+}
+.btn-glow:hover { box-shadow: var(--neon-glow-hover); transform: translateY(-2px); }
+
+/* HASIL PENCARIAN TICKET STYLE */
+.ticket-wrapper { 
+    background: linear-gradient(135deg, #1e293b, #0f172a); 
+    border: 2px solid var(--accent-glow); 
+    box-shadow: var(--neon-glow);
+    border-radius: 16px; 
+    padding: 25px; 
+    margin-top: 25px; 
+    text-align: left; 
+    display: none;
+}
+.ticket-header { color: var(--accent-glow); border-bottom: 1px dashed rgba(255,255,255,0.15); padding-bottom: 12px; margin-bottom: 18px; text-align: center; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+.ticket-field { margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 8px; }
+.ticket-field:last-child { border-bottom: none; }
+.ticket-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; }
+.ticket-value { font-size: 14px; font-weight: 500; color: white; margin-top: 4px; }
+
+
+/* =========================================
+   GAYA TAMBAHAN (Hasil Pembersihan HTML)
+   ========================================= */
+
+#pinAdmin {
+    text-align: center; 
+    letter-spacing: 3px;
+}
+
+.btn-glow .fa-arrow-right {
+    font-size: 14px; 
+    margin-left: 5px; 
+    margin-bottom: 0; 
+    color: white;
+}
+
+.search-wrapper {
+    display: flex; 
+    gap: 10px;
+}
+
+#searchKeyword {
+    margin-bottom: 0; 
+    text-transform: uppercase;
+}
+
+#btnCari {
+    width: auto; 
+    padding: 0 25px; 
+    border-radius: 8px;
+}
+
+#btnCari .fa-magnifying-glass, 
+#btnCari .fa-spinner {
+    margin: 0; 
+    font-size: 14px; 
+    color: white;
+}

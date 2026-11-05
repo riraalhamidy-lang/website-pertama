@@ -1,0 +1,49 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- Panggil warna global dulu -->
+<link rel="stylesheet" href="css/umum.css">
+
+<!-- MENGHUBUNGKAN KE FILE CSS -->
+<link rel="stylesheet" href="css/admin.css">
+
+
+<!-- KUNCI PORTAL (LOGIN) -->
+<div class="modal-box" id="login-gate">
+    <i class="fa-solid fa-user-shield"></i>
+    <h3>Portal Admin Markaz</h3>
+    <p>Silakan masukkan PIN otorisasi untuk mengakses database santri.</p>
+    
+    <div class="form-group">
+        <input type="password" id="pinAdmin" placeholder="Masukkan PIN Master">
+    </div>
+    <button class="btn-glow" onclick="cekKunci()">LOGIN KE SISTEM <i class="fa-solid fa-arrow-right"></i></button>
+</div>
+
+<!-- PANEL DATABASE (HASIL CARI) -->
+<div class="modal-box" id="admin-panel" style="display: none;">
+    <i class="fa-solid fa-server"></i>
+    <h3>Database Terpadu</h3>
+    <p>Cari dokumen pendaftaran santri langsung dari server pusat.</p>
+    
+    <!-- Class search-wrapper ini ditambahkan dari CSS -->
+    <div class="search-wrapper">
+        <input type="text" id="searchKeyword" placeholder="Ketik NIA atau Nama...">
+        <button class="btn-glow" id="btnCari" onclick="cariData()"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <div class="ticket-wrapper" id="boxHasil">
+        <div class="ticket-header" id="txtSumberTab">DATABASE FOUND</div>
+        <div id="areaDaftarData"></div>
+    </div>
+</div>
+
+<!-- MENGHUBUNGKAN KE FILE JAVASCRIPT BARU -->
+<script src="js/admin.js"></script>
+    <!-- 1. Panggil Pusat Kendali Dulu -->
+    <script src="js/config.js"></script>
+    
+    <!-- 2. Baru panggil logika halamannya -->
+    <script src="js/admin.js"></script>
