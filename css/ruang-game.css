@@ -1,0 +1,123 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+    width: 100%; padding: 15px 6%;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-line);
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    position: sticky; top: 0; z-index: 999;
+}
+.back-btn {
+    color: var(--text-dim); text-decoration: none; font-size: 14px;
+    display: flex; align-items: center; gap: 8px; transition: 0.3s;
+}
+.back-btn:hover { color: var(--accent-glow); }
+.header-title { font-weight: 700; color: var(--accent-glow); letter-spacing: 1px; }
+
+/* =================================================================
+   🔥 1. CSS MENU SELECTION GAMING 🔥
+   ================================================================= */
+#gameMenu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.game-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-line);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-glow);
+    box-shadow: var(--neon-glow);
+}
+
+.game-card i.main-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.game-card h3 { font-size: 20px; margin-bottom: 10px; font-weight: 700; }
+.game-card p { font-size: 13px; color: var(--text-dim); margin-bottom: 25px; line-height: 1.6; }
+
+.btn-play-card {
+    color: white; border: none;
+    padding: 10px 25px; border-radius: 30px;
+    font-family: 'Poppins'; font-weight: 600; font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* =================================================================
+   🎮 2. CSS AREA PLAYING GAME TAALO RUN 🎮
+   ================================================================= */
+#gamePlayArea {
+    display: none; 
+    margin-top: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 15px;
+}
+
+.game-title { font-size: 28px; margin-bottom: 5px; text-shadow: var(--neon-glow); }
+.game-desc { font-size: 12px; color: var(--text-dim); margin-bottom: 20px; }
+
+canvas {
+    background-color: var(--bg-card);
+    border: 2px solid var(--accent-glow);
+    border-radius: 12px;
+    box-shadow: var(--neon-glow);
+    width: 100%;
+    max-width: 600px;
+    height: auto; 
+    aspect-ratio: 2 / 1; 
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    touch-action: none; 
+}
+
+.score-board {
+    display: flex; justify-content: space-between; max-width: 600px;
+    margin: 10px auto; padding: 0 10px; font-weight: 600; font-size: 18px; color: var(--accent-glow);
+}
+
+.btn-action-game {
+    margin-top: 25px;
+    border: none;
+    padding: 12px 35px; border-radius: 30px; font-family: 'Poppins'; font-weight: 600;
+    cursor: pointer; transition: 0.3s;
+}
+
+.btn-restart { background-color: var(--accent-glow); color: white; box-shadow: var(--neon-glow); display: none; margin: 25px auto 0 auto;}
+.btn-restart:hover { transform: translateY(-3px); box-shadow: 0 0 25px rgba(59, 130, 246, 0.8); }
+
+.btn-exit { background-color: transparent; color: var(--text-dim); border: 1px solid var(--border-line); margin-top: 15px; font-size: 13px;}
+.btn-exit:hover { background: rgba(239, 68, 68, 0.1); color: #ef4444; border-color: #ef4444; }
