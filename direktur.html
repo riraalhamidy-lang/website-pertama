@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menara Pengawas Direktur | Markaz At-Ta'allum</title>
+    
+    <link rel="icon" href="aset/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- 1. Panggil Warna Tema Global (Hitam/Putih) -->
+    <link rel="stylesheet" href="css/umum.css">
+    
+    <!-- 2. Panggil Desain Khusus Direktur -->
+    <link rel="stylesheet" href="css/direktur.css">
+</head>
+<body>
+
+    <!-- GERBANG KEAMANAN DIREKTUR (LOGIN PIN) -->
+    <div id="login-gate" class="gate-overlay">
+        <div class="login-card">
+            <div class="icon-shield">
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <h2>Otorisasi Direktur</h2>
+            <p>Masukkan PIN Eksekutif untuk membuka Menara Pengawas Program.</p>
+            
+            <form onsubmit="cekKunciDirektur(event)">
+                <input type="password" id="pinDirektur" placeholder="••••••••" required>
+                <button type="submit" id="btnLoginDir" class="btn-primary-glow">
+                    BUKA MENARA PENGAWAS <i class="fa-solid fa-unlock-keyhole"></i>
+                </button>
+            </form>
+            <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <!-- AREA UTAMA DASHBOARD DIREKTUR -->
+    <div id="direktur-panel" style="display: none;">
+        
+        <header class="dir-header">
+            <div class="header-brand">
+                <img src="aset/logo.png" alt="Logo" class="brand-logo">
+                <div>
+                    <h1>RUANG KENDALI DIREKTUR</h1>
+                    <span>Pantauan Eksekutif & Manajemen Program</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-add-prog" onclick="bukaModalTambah()">
+                    <i class="fa-solid fa-plus"></i> Buat Program Baru
+                </button>
+                <button class="btn-refresh" onclick="muatDataDirektur()" title="Sinkronkan Data">
+                    <i class="fa-solid fa-arrows-rotate" id="iconRefresh"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="dir-container">
+            
+            <!-- BARIS 1: 3 KARTU RINGKASAN GLOBAL (KPI) -->
+            <section class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon blue"><i class="fa-solid fa-users"></i></div>
+                    <div class="kpi-info">
+                        <span>Total Murid Terdaftar</span>
+                        <h2 id="kpiTotalMurid">0</h2>
+                    </div>
+                </div>
+                
+                <div class="kpi-card">
+                    <div class="kpi-icon green"><i class="fa-solid fa-tower-broadcast"></i></div>
+                    <div class="kpi-info">
+                        <span>Status Program Aktif</span>
+                        <h2 id="kpiProgramAktif">0 / 0</h2>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon gold"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="kpi-info">
+                        <span>Rata-Rata Progres KBM</span>
+                        <h2 id="kpiRataProgres">0%</h2>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BARIS 2: DAFTAR KARTU PROGRAM -->
+            <div class="section-head">
+                <h2><i class="fa-solid fa-layer-group"></i> Daftar & Kendali Program</h2>
+                <span id="statusSinkron">Menunggu sinkronisasi...</span>
+            </div>
+
+            <section id="daftarProgramGrid" class="program-grid">
+                <!-- Kartu program akan di-generate otomatis oleh direktur.js -->
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL POP-UP: BUAT PROGRAM BARU -->
+    <div id="modalTambahProgram" class="modal-overlay">
+        <div class="modal-card">
+            <h3><i class="fa-solid fa-folder-plus"></i> Buat Program Pembelajaran Baru</h3>
+            <p>Program yang dibuat akan otomatis terhubung ke daftar pilihan halaman utama.</p>
+            
+            <form onsubmit="simpanProgramBaru(event)">
+                <div class="form-group">
+                    <label>Nama Program Baru *</label>
+                    <input type="text" id="inputNamaProg" placeholder="Cth: Program Takhassus Balaghoh" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Target Total Pertemuan (KBM) *</label>
+                    <input type="number" id="inputTargetProg" value="12" min="1" max="100" required>
+                    <small>Digunakan untuk menghitung persentase progres berjalan.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Status Pendaftaran Awal *</label>
+                    <select id="inputStatusProg">
+                        <option value="BUKA">BUKA (Tampil & Bisa Didaftar Murid)</option>
+                        <option value="TUTUP">TUTUP (Tampil Sebagai Ditutup)</option>
+                    </select>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="tutupModalTambah()">Batal</button>
+                    <button type="submit" id="btnSimpanProg" class="btn-save">Simpan & Tayangkan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 1. Panggil Pusat Kendali URL & Tema -->
+    <script src="js/config.js"></script>
+    
+    <!-- 2. Panggil Logika Direktur -->
+    <script src="js/direktur.js"></script>
+</body>
+</html>

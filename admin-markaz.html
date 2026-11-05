@@ -1,0 +1,30 @@
+<!-- Panggil warna global dulu -->
+<link rel="stylesheet" href="css/umum.css">
+
+<!-- MENYAMBUNGKAN KE FILE CSS ADMIN BARU -->
+<link rel="stylesheet" href="css/admin-markaz.css">
+
+
+<!-- Area Kunci Admin -->
+<div id="kunciAdmin">
+    <h2>RESTRICTED AREA</h2>
+    <input type="password" id="passAdmin" placeholder="Password Admin...">
+    <button class="btn-kunci" onclick="bukaKendali()">BUKA KENDALI</button>
+</div>
+
+<!-- Area Kendali Utama -->
+<div class="admin-box">
+    <h2>Papan Siar Markaz 📢</h2>
+    <form onsubmit="kirimPengumuman(event)">
+        <label>Judul Pengumuman</label>
+        <input type="text" id="judulInput" placeholder="Cth: Hasil Ujian Nahwu" required>
+        
+        <label>Isi Pengumuman / Nilai</label>
+        <textarea id="isiInput" rows="6" placeholder="Ketik pengumuman di sini..." required></textarea>
+        
+        <button type="submit" id="btnKirim">🚀 KIRIM KE WEB UTAMA</button>
+    </form>
+</div>
+
+<!-- MENGHUBUNGKAN KE FILE JAVASCRIPT BARU -->
+<script src="js/admin-markaz.js"></script>

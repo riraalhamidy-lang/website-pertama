@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markaz At-Ta'allum | Ruang Murid</title>
+    
+    <link rel="icon" href="aset/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+
+    <!-- Panggil warna global dulu -->
+    <link rel="stylesheet" href="css/umum.css">
+
+    <!-- MENGHUBUNGKAN KE FILE CSS BARU -->
+    <link rel="stylesheet" href="css/portal.css">
+</head>
+<body>
+
+    <div id="cropModal">
+        <h3 style="margin-bottom: 15px; color: white;">Sesuaikan Foto Profil</h3>
+        <div class="crop-container">
+            <img id="imageToCrop" src="" alt="Foto untuk dicrop">
+        </div>
+        <div class="crop-actions">
+            <button class="btn-crop-cancel" onclick="tutupCropModal()">Batal</button>
+            <button class="btn-crop-save" onclick="prosesCropDanUpload()"><i class="fa-solid fa-crop"></i> Crop & Upload</button>
+        </div>
+    </div>
+
+    <div id="login-overlay">
+        <div class="login-box">
+            <img src="aset/logo.png" alt="Logo" style="width: 70px; margin-bottom: 15px;">
+            <h2 style="color: white; margin-bottom: 5px;">Ruang Murid</h2>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 25px;">Masukkan kredensial Anda.</p>
+            <form onsubmit="prosesLoginDiPortal(event)">
+                <label>Nomor NIA</label>
+                <input type="text" id="portalNiaLogin" placeholder="NIA..." required style="text-transform: uppercase;">
+                <label>Password</label>
+                <input type="password" id="portalPassLogin" placeholder="Password..." required>
+                <button type="submit" id="btnProsesLogin" class="btn-glow">BUKA PORTAL</button>
+            </form>
+            <a href="index.html" style="display: block; margin-top: 20px; color: #ef4444; font-size: 12px; text-decoration: none;">&larr; Beranda</a>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-logo-container">
+            <img src="aset/logo.png" alt="Logo" class="header-logo">
+            <span class="header-title">RUANG MURID</span>
+        </div>
+        <div class="header-controls">
+            <select id="themeSelector" class="theme-select" onchange="ubahTema(this.value)">
+                <option value="dark">🌙 Dark Luxury</option>
+                <option value="light">☀️ Clean White</option>
+                <option value="emerald">🌲 Emerald</option>
+                <option value="purple">🔮 Royal Purple</option>
+            </select>
+            <button class="btn-logout" onclick="logOutMurid()"><i class="fa-solid fa-right-from-bracket"></i> Keluar</button>
+        </div>
+    </header>
+
+    <main id="main-dashboard">
+        
+        <section class="profile-card">
+            <div class="avatar-wrapper">
+                <img src="" alt="Avatar" class="profile-avatar" id="portalAvatar">
+                <button class="btn-edit-pp" onclick="document.getElementById('inputFoto').click()"><i class="fa-solid fa-camera"></i></button>
+                <input type="file" id="inputFoto" accept="image/*" style="display: none;" onchange="siapkanCrop(event)">
+            </div>
+            <div>
+                <div style="font-size: 12px; color: var(--text-dim);">Ahlan Wa Sahlan, Sobat Attaallum!</div>
+                <h1 class="student-name" id="portalNama">...</h1>
+                <div class="student-details">NIA: <span id="portalNiaUi">...</span> Program: <span id="portalProgramUi">...</span></div>
+                <div id="statusUpload" style="font-size: 11px; margin-top: 8px; font-weight: bold;"></div>
+            </div>
+        </section>
+
+        <section class="dashboard-grid">
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <span>Kalender Kehadiran</span> 
+                    <i class="fa-solid fa-calendar-check" id="iconStatusAbsen" style="transition: 0.3s;"></i>
+                </div>
+                <div class="calendar-container">
+                    <div class="calendar-grid" id="calendarGrid"></div>
+                </div>
+                <div class="attendance-stats">
+                    <div><span style="color:#10b981; font-weight:bold;" id="absentPresent">0</span> Hadir</div>
+                    <div><span style="color:#ef4444; font-weight:bold;" id="absentBad">0</span> Absen</div>
+                </div>
+            </div>
+
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <span>Nilai Imtihan Terbaru</span> 
+                    <i class="fa-solid fa-graduation-cap" id="iconStatusRapor" style="transition: 0.3s;"></i>
+                </div>
+                <ul class="grades-list">
+                    <li class="grade-item">Fiqih <span class="score" id="nilaiFiqih">...</span></li>
+                    <li class="grade-item">Tauhid <span class="score" id="nilaiTauhid">...</span></li>
+                    <li class="grade-item">Tafsir <span class="score" id="nilaiTafsir">...</span></li>
+                    <li class="grade-item">Hadist <span class="score" id="nilaiHadist">...</span></li>
+                    <li class="grade-item">Siroh <span class="score" id="nilaiSiroh">...</span></li>
+                    <li class="grade-item">Nahwu <span class="score" id="nilaiNahwu">...</span></li>
+                </ul>
+            </div>
+
+            <div class="dash-card">
+                <div class="dash-card-header"><span>Zona Hiburan</span> <i class="fa-solid fa-gamepad"></i></div>
+                <a href="ruang-game.html" class="btn-arcade"><i class="fa-solid fa-rocket" style="margin-right: 5px;"></i> MASUK RUANG ARCADE V2</a>
+                <hr style="border: 0; border-top: 1px dashed rgba(128,128,128,0.2); margin: 15px 0;">
+                <div style="font-size: 12px; text-align: center; color: var(--text-dim);">Atau Main Tic-Tac-Toe:</div>
+                <div class="game-board" id="board">
+                    <div class="game-cell" onclick="makeMove(0)"></div><div class="game-cell" onclick="makeMove(1)"></div><div class="game-cell" onclick="makeMove(2)"></div>
+                    <div class="game-cell" onclick="makeMove(3)"></div><div class="game-cell" onclick="makeMove(4)"></div><div class="game-cell" onclick="makeMove(5)"></div>
+                    <div class="game-cell" onclick="makeMove(6)"></div><div class="game-cell" onclick="makeMove(7)"></div><div class="game-cell" onclick="makeMove(8)"></div>
+                </div>
+                <div class="game-status" id="gameStatus">Giliran: X</div>
+                <button class="btn-reset-game" onclick="resetGame()">Main Lagi</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- LIBRARY EKSTERNAL CROPPER JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    
+    <!-- MENGHUBUNGKAN KE FILE JAVASCRIPT BARU -->
+    <script src="js/portal.js"></script>
+    <!-- 1. Panggil Pusat Kendali Dulu -->
+    <script src="js/config.js"></script>
+    
+    <!-- 2. Baru panggil logika halamannya -->
+    <script src="js/admin.js"></script>
+</body>
+</html>
