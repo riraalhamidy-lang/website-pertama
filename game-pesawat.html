@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markaz Space Shooter | Limitless Edition</title>
+    
+    <link rel="icon" href="aset/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Panggil warna global dulu -->
+    <link rel="stylesheet" href="css/umum.css">
+
+    <!-- MENGHUBUNGKAN KE FILE CSS -->
+    <link rel="stylesheet" href="css/game-pesawat.css">
+</head>
+<body>
+
+    <audio id="bgmHell" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/11/22/audio_d0862002dd.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="bgmAmbience" loop>
+        <source src="https://cdn.pixabay.com/audio/2021/08/04/audio_108df1fcc8.mp3" type="audio/mpeg">
+    </audio>
+
+    <header>
+        <div class="header-left">
+            <a href="ruang-game.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> KEMBALI</a>
+            <button class="btn-sound" id="btnSound" onclick="toggleAudio()"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+        <div class="header-title"><i class="fa-solid fa-rocket"></i> SPACE SHOOTER V2</div>
+    </header>
+
+    <div id="difficulty-screen" class="screen">
+        <h1>PILIH TANTANGAN LU!</h1>
+        <p>Beda mode, beda keganasan alien. Buktiin *skill* jari lu komandan.</p>
+        
+        <div class="diff-options">
+            <button class="btn-diff easy" onclick="setDifficulty('easy')">
+                <div>EASY <div class="diff-desc">Santai buat pemula</div></div> <i class="fa-solid fa-leaf"></i>
+            </button>
+            <button class="btn-diff normal" onclick="setDifficulty('normal')">
+                <div>NORMAL <div class="diff-desc">Standar baku hantam</div></div> <i class="fa-solid fa-meteor"></i>
+            </button>
+            <button class="btn-diff hard" onclick="setDifficulty('hard')">
+                <div>HARD <div class="diff-desc">Alien agresif & lincah</div></div> <i class="fa-solid fa-fire"></i>
+            </button>
+            <button class="btn-diff hell" onclick="setDifficulty('hell')">
+                <div>HELL MODE <div class="diff-desc">Nangis darah. Tegang abis!</div></div> <i class="fa-solid fa-skull-crossbones"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="selection-screen" class="screen">
+        <h1 style="color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5);">PILIH ARMADA</h1>
+        <p>Pilih tipe tempur yang sesuai sama gaya main lu.</p>
+        
+        <div class="ship-options">
+            <div class="ship-card" onclick="pilihPesawat(0)">
+                <div class="ship-preview-box"><div class="preview-speedster"></div></div>
+                <h3>SPEEDSTER V1</h3>
+                <p class="stats">Tipe: <span style="color:#3b82f6">Lincah & Cepat</span><br>Cocok buat ngindarin peluru.</p>
+                <button class="btn-select">PILIH SPEEDSTER</button>
+            </div>
+            
+            <div class="ship-card" onclick="pilihPesawat(1)">
+                <div class="ship-preview-box"><div class="preview-tank"></div></div>
+                <h3>TANK V1</h3>
+                <p class="stats">Tipe: <span style="color:#10b981">Armor & Damage Area</span><br>Tembakan lebar & brutal.</p>
+                <button class="btn-select">PILIH TANK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-screen">
+        <div id="ui">
+            <div id="modeIndicator">MODE</div>
+            <div>SKOR: <span id="currentScore" style="color: var(--success);">0</span></div>
+            <div id="warningMsg" class="warning-text">⚠️ BOSS INCOMING ⚠️</div>
+        </div>
+        
+        <canvas id="gameCanvas" width="500" height="600"></canvas>
+        
+        <div id="boss-health-container">
+            <div style="font-size: 10px; color: #ef4444; padding: 4px 10px; text-transform: uppercase; font-weight: 700; text-align: center;">MOTHERSHIP HP</div>
+            <div style="width: 100%; background: #334155; height: 10px;"><div id="boss-health-bar"></div></div>
+        </div>
+    </div>
+
+    <div id="end-overlay">
+        <h1 id="end-title">GAME OVER</h1>
+        <p id="end-score">Skor Akhir: 0</p>
+        <div class="end-actions">
+            <button class="btn-end btn-restart" onclick="restartToSelection()"><i class="fa-solid fa-rotate-right"></i> MAIN LAGI</button>
+            <button class="btn-end btn-exit" onclick="window.location.href='ruang-game.html'"><i class="fa-solid fa-door-open"></i> KELUAR</button>
+        </div>
+    </div>
+
+    <!-- MENGHUBUNGKAN KE FILE JAVASCRIPT -->
+    <script src="js/game-pesawat.js"></script>
+    
+</body>
+</html>

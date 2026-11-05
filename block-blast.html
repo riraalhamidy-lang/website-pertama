@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Blast | Markaz Arcade</title>
+    <link rel="icon" href="aset/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Panggil warna global dulu -->
+    <link rel="stylesheet" href="css/umum.css">
+
+    <!-- MENYAMBUNGKAN KE FILE CSS BARU -->
+    <link rel="stylesheet" href="css/block-blast.css">
+</head>
+<body>
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/10/14/audio_9939f792cb.mp3" type="audio/mpeg">
+    </audio>
+    <header>
+        <div class="header-left">
+            <a href="ruang-game.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Menu</a>
+            <button class="btn-sound" id="btnSound" onclick="toggleAudio()"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+        <div class="header-title"><i class="fa-solid fa-cubes-stacked"></i> BLOCK BLAST</div>
+    </header>
+    <div class="score-board">
+        <div class="score-box"><span class="score-label">SKOR</span><span id="scoreDisplay">0</span></div>
+        <div class="score-box"><span class="score-label">BEST</span><span id="bestDisplay">0</span></div>
+    </div>
+    <div id="game-board"></div>
+    <div id="tray"></div>
+    <div id="end-overlay">
+        <h1 id="end-title">MENTOK BRAY!</h1>
+        <p>Gak ada ruang lagi buat naruh balok.</p>
+        <p id="end-score">Skor Lu: 0</p>
+        <button class="btn-restart" onclick="initGame()"><i class="fa-solid fa-rotate-right"></i> MAIN LAGI</button>
+        <button class="btn-exit" onclick="window.location.href='ruang-game.html'"><i class="fa-solid fa-door-open"></i> KELUAR</button>
+    </div>
+        <!-- MENGHUBUNGKAN KE FILE JAVASCRIPT -->
+    <script src="js/block-blast.js"></script>
+    
+</body>
+
+</html>
