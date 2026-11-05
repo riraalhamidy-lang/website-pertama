@@ -1,0 +1,526 @@
+/* File: css/direktur.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* =========================================
+   1. GERBANG LOGIN DIREKTUR
+   ========================================= */
+.gate-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--bg-deep);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 9999;
+}
+
+.login-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-line);
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.icon-shield {
+    width: 70px; height: 70px;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-glow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 20px auto;
+    border: 1px solid var(--accent-glow);
+    box-shadow: var(--neon-glow);
+}
+
+.login-card h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.login-card p {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 25px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-line);
+    border-radius: 10px;
+    color: var(--text-main);
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-card input:focus {
+    outline: none;
+    border-color: var(--accent-glow);
+}
+
+.btn-primary-glow {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--accent-glow);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: var(--neon-glow);
+    transition: 0.3s;
+}
+
+.btn-primary-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--neon-glow-hover);
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+}
+
+.back-link:hover { color: var(--accent-glow); }
+
+/* =========================================
+   2. HEADER & CONTAINER UTAMA
+   ========================================= */
+.dir-header {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-line);
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-logo { width: 42px; height: 42px; object-fit: contain; }
+
+.header-brand h1 {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.header-brand span {
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-add-prog {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    transition: 0.3s;
+}
+
+.btn-add-prog:hover { transform: translateY(-2px); background-color: #059669; }
+
+.btn-refresh {
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    border: 1px solid var(--border-line);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.btn-refresh:hover { border-color: var(--accent-glow); color: var(--accent-glow); }
+
+.dir-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 6% 60px 6%;
+}
+
+/* =========================================
+   3. KARTU RINGKASAN GLOBAL (KPI)
+   ========================================= */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.kpi-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-line);
+    padding: 25px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.kpi-icon {
+    width: 60px; height: 60px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+}
+
+.kpi-icon.blue { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+.kpi-icon.green { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.kpi-icon.gold { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+
+.kpi-info span {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.kpi-info h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-top: 4px;
+}
+
+/* =========================================
+   4. GRID KARTU KENDALI PROGRAM
+   ========================================= */
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.section-head h2 {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-head span {
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+.program-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.prog-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-line);
+    border-radius: 18px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.prog-card:hover {
+    border-color: var(--accent-glow);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.prog-card.closed {
+    opacity: 0.75;
+}
+
+.prog-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.prog-title {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.badge-status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.badge-status.buka {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.badge-status.tutup {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+/* Kotak Angka Pendaftar */
+.prog-stats-box {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-line);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent-glow);
+}
+
+/* Progress Bar Berjalannya Program */
+.prog-progress-area {
+    margin-bottom: 22px;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.progress-track {
+    width: 100%;
+    height: 10px;
+    background-color: var(--bg-input);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-line);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+.progress-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    gap: 8px;
+}
+
+.btn-step {
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    border: 1px solid var(--border-line);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-step:hover {
+    border-color: var(--accent-glow);
+    color: var(--accent-glow);
+}
+
+/* Tombol Aksi Bawah (Buka/Tutup & Hapus) */
+.prog-actions {
+    display: flex;
+    gap: 10px;
+    border-top: 1px dashed var(--border-line);
+    padding-top: 15px;
+}
+
+.btn-toggle-status {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-toggle-status.tutup-aksi {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.btn-toggle-status.tutup-aksi:hover {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.btn-toggle-status.buka-aksi {
+    background-color: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.btn-toggle-status.buka-aksi:hover {
+    background-color: #10b981;
+    color: white;
+}
+
+.btn-delete-prog {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    width: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-delete-prog:hover {
+    background-color: #ef4444;
+    color: white;
+}
+
+/* =========================================
+   5. MODAL TAMBAH PROGRAM
+   ========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 9999;
+}
+
+.modal-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--accent-glow);
+    padding: 30px;
+    border-radius: 18px;
+    width: 100%;
+    max-width: 460px;
+}
+
+.modal-card h3 { margin-bottom: 6px; font-size: 18px; }
+.modal-card p { font-size: 12px; color: var(--text-dim); margin-bottom: 20px; }
+
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.form-group small { display: block; font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-line);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-cancel {
+    flex: 1; padding: 12px;
+    background: transparent;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-save {
+    flex: 2; padding: 12px;
+    background: #10b981;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
